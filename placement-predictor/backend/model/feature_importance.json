@@ -1,0 +1,34 @@
+[
+  {
+    "feature": "Communication_Skills",
+    "importance": 1.853608
+  },
+  {
+    "feature": "IQ",
+    "importance": 1.606369
+  },
+  {
+    "feature": "CGPA",
+    "importance": 1.397022
+  },
+  {
+    "feature": "Projects_Completed",
+    "importance": 1.164886
+  },
+  {
+    "feature": "Prev_Sem_Result",
+    "importance": 0.401658
+  },
+  {
+    "feature": "Extra_Curricular_Score",
+    "importance": 0.043876
+  },
+  {
+    "feature": "Internship_Experience_Yes",
+    "importance": 0.015238
+  },
+  {
+    "feature": "Internship_Experience_No",
+    "importance": 0.013424
+  }
+]

@@ -1,0 +1,18 @@
+# Create directory
+hdfs dfs -mkdir -p /logg/input
+
+# Upload file
+hdfs dfs -put logip.txt /logg/input
+
+# Check input
+hdfs dfs -ls /logg/input
+
+# Check jar
+jar tf log.jar
+
+# Run job
+hadoop jar log.jar log.Driver /logg/input /logg/output
+
+# View output
+hdfs dfs -cat /logg/output/part-r-00000
+

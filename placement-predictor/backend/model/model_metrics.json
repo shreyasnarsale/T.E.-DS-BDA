@@ -1,0 +1,35 @@
+{
+  "bestModel": "Logistic Regression",
+  "bestAccuracy": 0.9035,
+  "bestCvMeanAccuracy": 0.9021,
+  "bestCvStdAccuracy": 0.0036,
+  "models": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.9035,
+      "cvMeanAccuracy": 0.9021,
+      "cvStdAccuracy": 0.0036,
+      "precision_0": 0.9217,
+      "recall_0": 0.9664,
+      "precision_1": 0.7769,
+      "recall_1": 0.5873
+    }
+  ],
+  "confusionMatrix": [
+    [
+      1612,
+      56
+    ],
+    [
+      137,
+      195
+    ]
+  ],
+  "classificationReport": {
+    "precision_0": 0.9217,
+    "recall_0": 0.9664,
+    "precision_1": 0.7769,
+    "recall_1": 0.5873,
+    "accuracy": 0.9035
+  }
+}

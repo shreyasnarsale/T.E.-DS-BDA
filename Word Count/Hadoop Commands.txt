@@ -1,0 +1,17 @@
+# Create input directory in HDFS
+hdfs dfs -mkdir -p /wordcount/input
+
+# Upload input file to HDFS
+hdfs dfs -put more.txt /wordcount/input
+
+# List files in input directory
+hdfs dfs -ls /wordcount/input
+
+# Check contents of jar
+jar tf word.jar
+
+# Run Hadoop WordCount job
+hadoop jar word.jar wordcountss.Driver /wordcount/input /wordcount/output
+
+# View output
+hdfs dfs -cat /wordcount/output/part-r-00000

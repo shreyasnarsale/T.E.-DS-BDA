@@ -1,0 +1,111 @@
+### PyHadoop
+
+
+# ⚙️ Step 1: Go to Folder
+
+```bash
+cd your_project_folder
+```
+
+(Where `mapper.py`, `reducer.py`, `more.txt` are present)
+
+---
+
+# ⚙️ Step 2: Give Permission
+
+```bash
+chmod +x mapper.py reducer.py
+```
+
+---
+
+# ⚙️ Step 3: Test Locally (VERY IMPORTANT)
+
+```bash
+cat more.txt | python3 mapper.py
+```
+
+```bash
+cat more.txt | python3 mapper.py | sort | python3 reducer.py
+```
+
+✔ If this works → your code is correct
+
+---
+
+# ⚙️ Step 4: Start Hadoop
+
+```bash
+start-dfs.sh
+start-yarn.sh
+```
+
+Check:
+
+```bash
+jps
+```
+
+---
+
+# ⚙️ Step 5: Create HDFS Folder
+
+```bash
+hdfs dfs -mkdir -p /shreya
+```
+
+---
+
+# ⚙️ Step 6: Upload Input File
+
+```bash
+hdfs dfs -put more.txt /shreya
+```
+
+Check:
+
+```bash
+hdfs dfs -ls /shreya
+```
+
+---
+
+# ⚙️ Step 7: Run Hadoop Streaming Job
+
+```bash
+hadoop jar /usr/local/hadoop/share/hadoop/tools/lib/hadoop-streaming-3.3.6.jar \
+-input /shreya/more.txt \
+-output /output_py \
+-mapper "python3 mapper.py" \
+-reducer "python3 reducer.py" \
+-file mapper.py \
+-file reducer.py
+```
+
+---
+
+# ⚙️ Step 8: View Output
+
+```bash
+hdfs dfs -cat /output_py/part-00000
+```
+
+---
+
+# ⚙️ Step 9: Run Again (IMPORTANT)
+
+```bash
+hdfs dfs -rm -r /output_py
+```
+
+---
+
+# ⚙️ Step 10: Stop Hadoop
+
+```bash
+stop-yarn.sh
+stop-dfs.sh
+```
+
+---
+

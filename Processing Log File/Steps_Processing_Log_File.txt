@@ -1,0 +1,138 @@
+### Processing Log File
+
+---
+
+# ⚙️ Step 1: Start Hadoop
+
+```bash
+start-dfs.sh
+start-yarn.sh
+```
+
+Check:
+
+```bash
+jps
+```
+
+✔ You should see:
+
+* NameNode
+* DataNode
+* ResourceManager
+* NodeManager
+
+---
+
+# ⚙️ Step 2: Go to Project Folder
+
+```bash
+cd log
+```
+
+(Your folder should contain:)
+
+* Driver.java
+* My_Mapper.java
+* My_Reducer.java
+* logip.txt
+
+---
+
+# ⚙️ Step 3: Compile Java Code
+
+```bash
+mkdir classes
+```
+
+```bash
+javac -classpath `hadoop classpath` -d classes *.java
+```
+
+---
+
+# ⚙️ Step 4: Create JAR File
+
+```bash
+jar -cvf log.jar -C classes/ .
+```
+
+Check:
+
+```bash
+jar tf log.jar
+```
+
+✔ Should show:
+
+* log/Driver.class
+* log/My_Mapper.class
+* log/My_Reducer.class
+
+---
+
+# ⚙️ Step 5: Prepare HDFS
+
+### Create input folder:
+
+```bash
+hdfs dfs -mkdir -p /logg/input
+```
+
+### Upload your file:
+
+```bash
+hdfs dfs -put logip.txt /logg/input
+```
+
+Check:
+
+```bash
+hdfs dfs -ls /logg/input
+```
+
+---
+
+# ⚙️ Step 6: Run Hadoop Program
+
+```bash
+hadoop jar log.jar log.Driver /logg/input /logg/output
+```
+
+---
+
+# ⚙️ Step 7: View Output
+
+```bash
+hdfs dfs -cat /logg/output/part-r-00000
+```
+
+✔ Output:
+
+```
+<IP_ADDRESS>   <MAX_COUNT>
+```
+
+---
+
+# ⚙️ Step 8: (IMPORTANT) Delete Output for Next Run
+
+If you run again:
+
+```bash
+hdfs dfs -rm -r /logg/output
+```
+
+---
+
+# ⚙️ Step 9: Stop Hadoop
+
+```bash
+stop-yarn.sh
+stop-dfs.sh
+```
+
+---
+
+
+
